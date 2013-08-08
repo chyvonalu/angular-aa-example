@@ -1,0 +1,33 @@
+body {
+	font-family: 'Maven Pro', sans-serif;
+	font-size: medium;
+	width: 20cm;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #FEFFF0;
+
+}
+
+#topbar {
+	margin-bottom: 0.6cm;
+}
+
+#sidebar {
+	border-top: 1px solid #727509;
+	border-right: 1px solid #727509;
+	padding: 0.2cm;
+	float: left;
+	margin-right: 1cm;
+	width: 3cm;
+}
+
+#content {
+	float: left;
+	width: 15cm;
+}
+
+.link {
+	text-decoration: underline;
+	color: #727509;
+	cursor: pointer;
+}

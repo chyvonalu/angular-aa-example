@@ -1,0 +1,55 @@
+<!doctype html>
+<html ng-app='app' xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Angular AA Example</title>
+
+		<script src='/lib/jquery.js'></script>
+		<script src='/lib/angular.js'></script>
+		<script src='/lib/underscore.js'></script>
+		<script src='index.js'></script>
+
+		<link rel="stylesheet" type="text/css" href="/index.css"/>
+		<link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'/>
+	</head>
+	<body>
+		<h1>Angular authentication and authorization example</h1>
+
+		<div id='topbar' ng-controller='TopBarController'>
+			<span>Hi, {{user.name}}</span>
+			<span ng-switch='' on='user.loggedIn'>
+				<span ng-switch-when='false'>
+					<input type='text' name='name' ng-model='credentials.name'/>
+					<input type='password' name='pw' ng-model='credentials.pw'/>
+					<span ng-switch='' on='model.state' ng-init='model.state = "new"'>
+						<span ng-switch-when='new'>
+							<span class='link' ng-click='login()'>Login</span>
+						</span>
+						<busy ng-switch-when='busy'/>
+						<span ng-switch-when='error'>
+							<span>Login failed, </span>
+							<span class='link' ng-click='login()'>Login</span>
+						</span>
+					</span>
+				</span>
+				<span ng-switch-when='true'>
+					<span ng-switch='' on='model.state' ng-init='model.state = "new"'>
+						<span ng-switch-when='new'>
+							<span class='link' ng-click='logout()'>Logout</span>
+						</span>
+						<busy ng-switch-when='busy'/>
+					</span>
+				</span>
+			</span>
+		</div>
+
+		<div id='sidebar' ng-controller='SideBarController'>
+			<div ng-repeat='page in user.pages'>
+				<a href='/#{{page.path}}'>{{page.title}}</a>
+			</div>
+			<a href='/#/broken'>Broken</a>
+		</div>
+
+		<div id='content' ng-view=''>
+		</div>
+	</body>
+</html>
