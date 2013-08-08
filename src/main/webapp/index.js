@@ -6,34 +6,39 @@
 	var pages = [{
 		title: 'Guest Page 1',
 		path: '/guest1',
-		template: 'guest1',
+		templateName: 'guest1',
 		accessibleFor: ['guest']
 	}, {
 		title: 'Guest Page 2',
 		path: '/guest2',
-		template: 'guest2',
+		templateName: 'guest2',
 		accessibleFor: ['guest']
 	}, {
 		title: 'User Page 1',
 		path: '/user1',
-		template: 'user1',
+		templateName: 'user1',
 		accessibleFor: ['user']
 	}, {
 		title: 'User Page 2',
 		path: '/user2',
-		template: 'user2',
+		templateName: 'user2',
 		accessibleFor: ['user']
 	}, {
 		title: 'Admin Page 1',
 		path: '/admin1',
-		template: 'admin1',
+		templateName: 'admin1',
 		accessibleFor: ['admin']
 	}, {
 		title: 'Admin Page 2',
 		path: '/admin2',
-		template: 'admin2',
+		templateName: 'admin2',
 		accessibleFor: ['admin']
-	}];
+	}, {
+		title: 'Not Available Page',
+		path: '/not-available-page',
+		template: '<div></div>',
+		accessibleFor: []
+	}, ];
 
 
 
@@ -100,7 +105,8 @@
 	app.config(['$routeProvider', function($routeProvider) {
 		_.each(pages, function(page) {
 			$routeProvider.when(page.path, {
-				templateUrl: '/pages/' + page.template + '.html',
+				templateUrl: '/pages/' + page.templateName + '.html',
+				template: page.template,
 				controller: page.controller,
 				accessibleFor: page.accessibleFor,
 				page: page
